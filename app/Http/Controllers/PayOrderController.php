@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Billing\PaymentGateway;
+use App\Billing\PaymentGatewayContact;
 use App\Orders\OrderDetails;
 use Illuminate\Http\Request;
 
 class PayOrderController extends Controller
 {
-    public function store(OrderDetails $orderDetails,PaymentGateway $paymentGateway)
+    public function store(OrderDetails $orderDetails,PaymentGatewayContact $paymentGatewayContact)
     {
         $orders = $orderDetails->all();
         
-        dd($paymentGateway->charge(2000));
+        dd($paymentGatewayContact->charge(2000));
     }
 }

@@ -4,7 +4,7 @@ namespace App\Billing;
 use Illuminate\Support\Str;
 use App\Billing\PaymentGatewayContact;
 
-class PaymentGateway implements PaymentGatewayContact
+class CreditPaymentGateway implements PaymentGatewayContact
 {
     private $currency;
     private $discount;
@@ -25,12 +25,14 @@ class PaymentGateway implements PaymentGatewayContact
     public function charge($amount)
     {
         //Charge the bank
+        $fees = $this->discount * 0.03;
 
         return [
             'amount' => $amount - $this->discount,
             'confirmation_number' => Str::random(),
             'currency' => $this->currency,
-            'discount' => $this->discount
+            'discount' => $this->discount,
+            'fees' => $fees
         ];
     }
 }
