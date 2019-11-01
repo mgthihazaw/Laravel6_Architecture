@@ -19,3 +19,5 @@ Route::get('/pay', 'PayOrderController@store');
 |--------------------------------------------------------------------------
 */
 Route::get('/customer', 'CustomerController@index');
+Route::get('/customer/{id}', 'CustomerController@show');
+Route::get('/customer/{id}/update', 'CustomerController@update');

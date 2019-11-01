@@ -12,4 +12,14 @@ class Customer extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function format()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'created_by' => $this->user->email,
+            'created_at' => $this->created_at,
+
+        ];
+    }
 }
